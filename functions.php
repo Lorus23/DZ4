@@ -1,26 +1,33 @@
 <?php
+require_once __DIR__ . '\components\main.php';
+require_once __DIR__ . '\components\base.php';
+require_once __DIR__ . '\components\daily.php';
+require_once __DIR__ . '\components\hourly.php';
+require_once __DIR__ . '\components\student.php';
 
-include '\base.php';
-//require_once 'daily.php';
-//require_once 'hourly.php';
-//require_once 'student.php';
-//require_once 'main.php';
 
-//interface Calculation
-//{
-//    public function price($data);
-//}
-//$data = $_POST;
+interface Calculation
+{
+    public function price($data);
+}
 
-//$result = new base();
-//$result ->calc();
+$data = $_POST;
+$gps = $data['gps'];
+$driver = $data['driver'];
 
-//if ($data['tarif']==1){$result = new base();
-//$result->calc();}
-//switch ($data['tarif']){
-//    case '1': base::calc();
-//    case 2: base::calc($data);
-//    case 3: base::calc($data);
-//    case 4: base::calc($data);
-//    default;
-//}
+switch ($data['tarif']) {
+    case '1':
+        $result = new base($data);
+        break;
+    case '2':
+        $result = new hourly($data);
+        break;
+    case '3':
+        $result = new daily($data);
+        break;
+    case '4':
+        $result = new student($data);
+        break;
+    default;
+}
+
