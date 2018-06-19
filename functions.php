@@ -1,10 +1,10 @@
 <?php
-require_once __DIR__ . '\components\main.php';
-require_once __DIR__ . '\components\additional.php';
-require_once __DIR__ . '\components\base.php';
-require_once __DIR__ . '\components\daily.php';
-require_once __DIR__ . '\components\hourly.php';
-require_once __DIR__ . '\components\student.php';
+require_once realpath(__DIR__) . DIRECTORY_SEPARATOR . 'components'. DIRECTORY_SEPARATOR .'main.php';
+require_once realpath(__DIR__) . DIRECTORY_SEPARATOR . 'components'. DIRECTORY_SEPARATOR .'additional.php';
+require_once realpath(__DIR__) . DIRECTORY_SEPARATOR . 'components'. DIRECTORY_SEPARATOR .'base.php';
+require_once realpath(__DIR__) . DIRECTORY_SEPARATOR . 'components'. DIRECTORY_SEPARATOR .'daily.php';
+require_once realpath(__DIR__) . DIRECTORY_SEPARATOR . 'components'. DIRECTORY_SEPARATOR .'hourly.php';
+require_once realpath(__DIR__) . DIRECTORY_SEPARATOR . 'components'. DIRECTORY_SEPARATOR .'student.php';
 
 interface I_Calculation
 {
