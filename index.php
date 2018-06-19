@@ -8,8 +8,8 @@
         </select></p>
     <p>Введите расстояние которые проехало авто:</p>
     <input type="text" name="distance">
-    <p>Введите время аренды авто:</p>
-    <input type="text" name="timeHour">::<input type="text" name="timeMin">
+    <p>Укажите время аренды авто:</p>
+    <p><input type="time" name="cron" min="00:01" max="24:00"></p>
     <p>Введите возраст водителя:</p>
     <input type="text" name="age">
     <p>Дополнительные услуги:</p>

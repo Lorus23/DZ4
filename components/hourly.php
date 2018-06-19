@@ -1,8 +1,10 @@
 <?php
 
-class hourly
+class hourly extends A_Main
 {
-    public function __construct($data)
+    use additional;
+
+    public function calc($data)
     {
         $time = intval($data['timeHour']) * 60 + intval($data['timeMin']);
         if ($time < 60) {
@@ -10,12 +12,14 @@ class hourly
         }
         $price = round($time * 200 / 60);
         if ($data['gps']) {
-            $price += round($time / 60 * 15);
+            $price += gpsServices($time, $price);
         }
         if ($data['driver']) {
-            $price += 100;
+            $price += driverServices($price);
         }
-        echo $price;
+        if ($data['age'] >= 18 && $data['age'] <= 21) {
+            $price = $this->ageRatio($price);
+        }
         return $price;
     }
 }

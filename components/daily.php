@@ -1,24 +1,26 @@
 <?php
 
-class daily
+class daily extends A_Main
 {
-    public function __construct($data)
+    use additional;
+
+    public function calc($data)
     {
         $time = intval($data['timeHour']) * 60 + intval($data['timeMin']);
-        $price = intval($data['distance']) * 1 + $time * 3;
+        if ($time < 60 * 24) {
+            $time = 60 * 24;
+        }
+        $price = round($time * 1000 / 60 * 24);
 
         if ($data['gps']) {
-            if ($time < 60) {
-                $time = 60;
-                $price += (round($time) / 60 * 15);
-            } else {
-                $price += (round($time) / 60 * 15);
-            }
+            $price += gpsServices($time, $price);
         }
         if ($data['driver']) {
-            $price += 100;
+            $price += driverServices($price);
         }
-        echo $price;
+        if ($data['age'] >= 18 && $data['age'] <= 23) {
+            $price += $this->ageRatio($price);
+        }
         return $price;
     }
 }

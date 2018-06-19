@@ -1,33 +1,42 @@
 <?php
 require_once __DIR__ . '\components\main.php';
+require_once __DIR__ . '\components\additional.php';
 require_once __DIR__ . '\components\base.php';
 require_once __DIR__ . '\components\daily.php';
 require_once __DIR__ . '\components\hourly.php';
 require_once __DIR__ . '\components\student.php';
 
-
-interface Calculation
+interface I_Calculation
 {
-    public function price($data);
+    public function ageRatio($price);
 }
 
 $data = $_POST;
+$cron = explode(":", $_POST['cron']);
+$data['timeHour'] = $cron[0];
+$data['timeMin'] = $cron[1];
 $gps = $data['gps'];
 $driver = $data['driver'];
 
 switch ($data['tarif']) {
     case '1':
-        $result = new base($data);
+        $object = new base($data);
+        $result = $object->calc($data);
         break;
     case '2':
-        $result = new hourly($data);
+        $object = new hourly($data);
+        $result = $object->calc($data);
         break;
     case '3':
-        $result = new daily($data);
+        $object = new daily($data);
+        $result = $object->calc($data);
         break;
     case '4':
-        $result = new student($data);
+        $object = new student($data);
+        $result = $object->calc($data);
         break;
     default;
 }
+
+echo 'Оплата: ' . $result . ' $';
 
