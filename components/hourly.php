@@ -1,6 +1,6 @@
 <?php
 
-class hourly extends A_Main
+class hourly extends aMain
 {
     use additional;
 

@@ -1,6 +1,6 @@
 <?php
 
-class daily extends A_Main
+class daily extends aMain
 {
     use additional;
 

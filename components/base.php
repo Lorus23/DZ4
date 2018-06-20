@@ -1,6 +1,6 @@
 <?php
 
-class base extends A_Main
+class base extends aMain
 {
     use additional;
 

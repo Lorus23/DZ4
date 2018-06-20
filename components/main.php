@@ -1,6 +1,6 @@
 <?php
 
-abstract class A_Main implements I_Calculation
+abstract class aMain implements iCalculation
 {
     public function ageRatio($price)
     {

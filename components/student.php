@@ -1,6 +1,6 @@
 <?php
 
-class student extends A_Main
+class student extends aMain
 {
     use additional;
 
