@@ -6,9 +6,9 @@ trait additional
     {
         if ($time < 60) {
             $time = 60;
-            $price += (round($time) / 60 * 15);
+            $price += $time / 60 * 15;
         } else {
-            $price += (round($time) / 60 * 15);
+            $price += $time / 60 * 15;
         }
         return $price;
     }
